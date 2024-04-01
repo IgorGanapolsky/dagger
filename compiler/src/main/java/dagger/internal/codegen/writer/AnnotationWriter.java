@@ -53,7 +53,7 @@ public final class AnnotationWriter implements Writable, HasClassReferences {
       appendable.append('(');
       if (memberMap.size() == 1) {
         Entry<String, Writable> onlyEntry = Iterables.getOnlyElement(memberMap.entrySet());
-        if (!onlyEntry.getKey().equals("value")) {
+        if (!"value".equals(onlyEntry.getKey())) {
           appendable.append(onlyEntry.getKey()).append(" = ");
         }
         onlyEntry.getValue().write(appendable, context);

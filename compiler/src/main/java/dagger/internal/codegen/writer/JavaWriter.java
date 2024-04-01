@@ -138,7 +138,7 @@ public final class JavaWriter {
     for (ClassName className : importCandidates) {
       if (!(className.packageName().equals(packageName)
               && !className.enclosingClassName().isPresent())
-          && !(className.packageName().equals("java.lang")
+          && !("java.lang".equals(className.packageName())
               && className.enclosingSimpleNames().isEmpty())
           && !typeNames.contains(className.topLevelClassName())) {
         Optional<ClassName> importCandidate = Optional.of(className);
@@ -250,7 +250,7 @@ public final class JavaWriter {
               && !className.enclosingClassName().isPresent()
               && !collidesWithVisibleClass(className)) // need to account for scope & hiding
           || visibleClasses.contains(className)
-          || (className.packageName().equals("java.lang")
+          || ("java.lang".equals(className.packageName())
               && className.enclosingSimpleNames().isEmpty());
     }
   }

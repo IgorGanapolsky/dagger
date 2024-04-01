@@ -38,23 +38,23 @@ final class DependencyVariableNamer implements Function<DependencyRequest, Strin
       case INSTANCE:
         return variableName;
       case LAZY:
-        return variableName.startsWith("lazy") && !variableName.equals("lazy")
+        return variableName.startsWith("lazy") && !"lazy".equals(variableName)
             ? Ascii.toLowerCase(variableName.charAt(4)) + variableName.substring(5)
             : variableName;
       case PROVIDER:
-        return variableName.endsWith("Provider") && !variableName.equals("Provider")
+        return variableName.endsWith("Provider") && !"Provider".equals(variableName)
             ? variableName.substring(0, variableName.length() - 8)
             : variableName;
       case MEMBERS_INJECTOR:
-        return variableName.endsWith("MembersInjector") && !variableName.equals("MembersInjector")
+        return variableName.endsWith("MembersInjector") && !"MembersInjector".equals(variableName)
             ? variableName.substring(0, variableName.length() - 15)
             : variableName;
       case PRODUCED:
-        return variableName.startsWith("produced") && !variableName.equals("produced")
+        return variableName.startsWith("produced") && !"produced".equals(variableName)
             ? Ascii.toLowerCase(variableName.charAt(8)) + variableName.substring(9)
             : variableName;
       case PRODUCER:
-        return variableName.endsWith("Producer") && !variableName.equals("Producer")
+        return variableName.endsWith("Producer") && !"Producer".equals(variableName)
             ? variableName.substring(0, variableName.length() - 8)
             : variableName;
       default:
